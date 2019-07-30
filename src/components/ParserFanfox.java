@@ -1,6 +1,7 @@
 package components;
 
 import java.util.Calendar;
+import java.util.regex.Pattern;
 
 import com.google.gson.JsonObject;
 
@@ -31,8 +32,8 @@ public class ParserFanfox implements Parser {
 			release_date.addProperty("hour", date.get(Calendar.HOUR));
 			release_date.addProperty("minute", date.get(Calendar.MINUTE));
 			release_date.addProperty("second", date.get(Calendar.SECOND));
-			
-			double release_number = Double.parseDouble(this.rfr.getItem_title().split("Ch.")[1]);
+
+			double release_number = Double.parseDouble(this.rfr.getItem_title().split(Pattern.quote("Ch."))[1]);
 			//String name_url = this.rss_url.split("/")[this.rss_url.split("/").length - 1].split(".xml")[0];
 			String url = release_url.split("/manga/")[0] + "/manga/" + release_url.split("/manga/")[1].split("/")[0] + "/";
 			String language = "VUS";

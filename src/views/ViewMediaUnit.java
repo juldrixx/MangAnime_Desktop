@@ -54,7 +54,7 @@ public class ViewMediaUnit extends JPanel {
 		this.labelState = new JLabel("");
 		this.labelState.setForeground(Color.WHITE);
 		this.labelState.setFont(new Font("Verdana", Font.PLAIN, 15));
-		this.labelState.setOpaque(true);
+		this.labelState.setOpaque(false);
 		this.labelState.setBackground(Color.decode("#212529"));
 		this.labelState.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
 		this.labelState.setPreferredSize(new Dimension(colWidth.get(0), 40));
@@ -64,7 +64,7 @@ public class ViewMediaUnit extends JPanel {
 		this.labelDate = new JLabel("");
 		this.labelDate.setForeground(Color.WHITE);
 		this.labelDate.setFont(new Font("Verdana", Font.PLAIN, 15));
-		this.labelDate.setOpaque(true);
+		this.labelDate.setOpaque(false);
 		this.labelDate.setBackground(Color.decode("#212529"));
 		this.labelDate.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
 		this.labelDate.setPreferredSize(new Dimension(colWidth.get(1), 40));
@@ -74,7 +74,7 @@ public class ViewMediaUnit extends JPanel {
 		this.labelTitle = new JLabel("");
 		this.labelTitle.setForeground(Color.WHITE);
 		this.labelTitle.setFont(new Font("Verdana", Font.PLAIN, 15));
-		this.labelTitle.setOpaque(true);
+		this.labelTitle.setOpaque(false);
 		this.labelTitle.setBackground(Color.decode("#212529"));
 		this.labelTitle.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
 		this.labelTitle.setPreferredSize(new Dimension(colWidth.get(2), 40));
@@ -84,6 +84,7 @@ public class ViewMediaUnit extends JPanel {
 		this.panelLastViewed = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		this.panelLastViewed.setPreferredSize(new Dimension(colWidth.get(3), 40));
 		this.panelLastViewed.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
+		this.panelLastViewed.setOpaque(false);
 		this.panelLastViewed.setBackground(Color.decode("#212529"));
 	
 		this.labelLastViewed = new JLabel("");
@@ -117,7 +118,7 @@ public class ViewMediaUnit extends JPanel {
 		this.labelRelease = new JLabel("");
 		this.labelRelease.setForeground(Color.WHITE);
 		this.labelRelease.setFont(new Font("Verdana", Font.PLAIN, 15));
-		this.labelRelease.setOpaque(true);
+		this.labelRelease.setOpaque(false);
 		this.labelRelease.setBackground(Color.decode("#212529"));
 		this.labelRelease.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
 		this.labelRelease.setPreferredSize(new Dimension(colWidth.get(4), 40));
@@ -125,8 +126,9 @@ public class ViewMediaUnit extends JPanel {
 		
 		
 		JPanel panelAction = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
+		panelAction.setOpaque(false);
 		panelAction.setBackground(Color.decode("#212529"));
-		panelAction.setBorder(BorderFactory.createEmptyBorder(0,20,0,0));
+		panelAction.setBorder(BorderFactory.createEmptyBorder(5,20,0,0));
 		panelAction.setPreferredSize(new Dimension(colWidth.get(5), 40));		
 
 		this.actionState = new JLabel();
@@ -149,7 +151,7 @@ public class ViewMediaUnit extends JPanel {
 		this.setMinimumSize(new Dimension(1464, 40));
 		this.setMaximumSize(new Dimension(1464, 40));
 		this.setPreferredSize(new Dimension(1464, 40));
-		this.setBackground(Color.red);
+		this.setBackground(Color.decode("#212529"));
 		
 	}
 }

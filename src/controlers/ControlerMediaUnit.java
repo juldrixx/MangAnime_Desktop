@@ -51,6 +51,44 @@ public class ControlerMediaUnit {
 		
 		MouseListenerActionUnfollow mouseListenerActionUnfollow = new MouseListenerActionUnfollow();
 		this.view.actionUnfollow.addMouseListener(mouseListenerActionUnfollow);
+		
+		MouseListenerHoverUnit mouseListenerHoverUnit = new MouseListenerHoverUnit();
+		this.view.addMouseListener(mouseListenerHoverUnit);
+	}
+	
+	public class MouseListenerHoverUnit implements MouseListener {
+		
+		public MouseListenerHoverUnit() {
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			view.setBackground(new Color(50, 50, 50));			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			view.setBackground(Color.decode("#212529"));
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 	
 	public class MouseListenerActionUnfollow implements MouseListener {

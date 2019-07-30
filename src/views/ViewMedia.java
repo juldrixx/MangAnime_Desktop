@@ -163,6 +163,7 @@ public class ViewMedia extends JLayeredPane {
 		scrollPanelMedia.setBounds(68, 290, 1465, 480);
 		scrollPanelMedia.setBorder(BorderFactory.createEmptyBorder());
 		scrollPanelMedia.setOpaque(false);
+		scrollPanelMedia.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scrollPanelMedia, new Integer(2));
 	}
 	

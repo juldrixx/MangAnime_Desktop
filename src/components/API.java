@@ -41,55 +41,57 @@ public class API {
 		Media m = null;
 		Parser parser = null;
 		
-		String site = "";
-		try {
-			String[] url_splitted = rss_url.split(Pattern.quote("."));
-			site = url_splitted[0].contains("www") ? url_splitted[1] : url_splitted[0].split("://")[1];
-		}
-		catch(Exception e) {
-			return m;
-		}
-		
-		switch (site) {
-		case "fanfox":			
-			parser = new ParserFanfox(rss_url);
-			break;
-		case "jetanime":			
-			parser = new ParserJetanime(rss_url);
-			break;
-		default:
-			return m;
-		}
-		
-		Media info = parser.getInformation();
-		
-		int id_media = this.dbm.mediaExist(rss_url);
-		if(id_media != -1) {
-			if(this.dbm.updateTypeMedia(rss_url, type)) {
-				if(!this.dbm.followMediaList(id_media)) {
+		if(this.testUser(username)) {
+			String site = "";
+			try {
+				String[] url_splitted = rss_url.split(Pattern.quote("."));
+				site = url_splitted[0].contains("www") ? url_splitted[1] : url_splitted[0].split("://")[1];
+			}
+			catch(Exception e) {
+				return m;
+			}
+			
+			switch (site) {
+			case "fanfox":			
+				parser = new ParserFanfox(rss_url);
+				break;
+			case "jetanime":			
+				parser = new ParserJetanime(rss_url);
+				break;
+			default:
+				return m;
+			}
+			
+			Media info = parser.getInformation();
+			
+			int id_media = this.dbm.mediaExist(rss_url);
+			if(id_media != -1) {
+				if(this.dbm.updateTypeMedia(rss_url, type)) {
+					if(!this.dbm.followMediaList(id_media)) {
+						return m;
+					}
+				}
+				else {
 					return m;
 				}
 			}
 			else {
-				return m;
+				if(!this.dbm.insertMedia(type, info)) {
+					return m;
+				}
 			}
-		}
-		else {
-			if(!this.dbm.insertMedia(type, info)) {
-				return m;
+			
+			if(!this.dbm.testMediaList(rss_url, username)) {
+				if(!this.dbm.insertMediaList(rss_url, username)){
+					return m;
+				}
 			}
-		}
-		
-		if(!this.dbm.testMediaList(rss_url, username)) {
-			if(!this.dbm.insertMediaList(rss_url, username)){
-				return m;
-			}
-		}
-
-		ArrayList<Media> mediaList = this.dbm.getMedia(username, type);
-		for(Media med : mediaList) {
-			if(med.getRss_url().equals(rss_url)) {
-				return med;
+	
+			ArrayList<Media> mediaList = this.dbm.getMedia(username, type);
+			for(Media med : mediaList) {
+				if(med.getRss_url().equals(rss_url)) {
+					return med;
+				}
 			}
 		}
 
