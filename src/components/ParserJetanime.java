@@ -1,6 +1,5 @@
 package components;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 import com.google.gson.JsonObject;
 
@@ -33,12 +32,12 @@ public class ParserJetanime implements Parser {
 			release_date.addProperty("minute", date.get(Calendar.MINUTE));
 			release_date.addProperty("second", date.get(Calendar.SECOND));
 			
-			double release_number = Double.parseDouble(title.split(" ")[title.split(" ").length - 2]);
+			String release_number_string = title.split(" ")[title.split(" ").length - 2];
+			double release_number = Double.parseDouble(release_number_string);
 			//String name_url = this.rss_url.split("/")[this.rss_url.split("/").length - 2];
 			String url = this.rss_url.replaceAll("rss", "anime");
 			String language = title.split(" ")[title.split(" ").length - 1];
-			DecimalFormat format = new DecimalFormat("0.#");
-			String name = title.replaceAll(format.format(release_number), "").replaceAll(language, "").replaceAll("Episode", "").trim();
+			String name = title.replaceAll(release_number_string, "").replaceAll(language, "").replaceAll("Episode", "").trim();
 			
 			return new Media(name, release_number, release_date, language, this.rss_url, url, release_url);
 		}
