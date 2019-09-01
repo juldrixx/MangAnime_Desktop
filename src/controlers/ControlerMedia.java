@@ -153,7 +153,7 @@ public class ControlerMedia {
 				}
 				
 				String day_name = DateUtils.getDayName(m.getRelease_date().get("day_name").getAsInt());
-				String day = m.getRelease_date().get("day_name").getAsString();
+				String day = m.getRelease_date().get("day").getAsString();
 				String month = DateUtils.getMonthName(m.getRelease_date().get("month").getAsInt());
 				String year = m.getRelease_date().get("year").getAsString();
 				String hour = m.getRelease_date().get("hour").getAsString();
